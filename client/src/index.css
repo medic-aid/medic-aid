@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#landingpage-text {
+  color: #16a7c8;
+}
+
+.landing_bg {
+  background-color: #16a7c8;
+}
+
+#landing_btn {
+  background-color: #16a7c8;
+}
+
+#landing_text {
+  color: #16a7c8;
+}
+
+#bg-img {
+  background-image: url('/public/assets/images/doctor.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#btn {
+  border-color: #16a7c8;
+}
+
+#records {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('/public/assets/images/records.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+#bandage {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('/public/assets/images/bandage.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+#doctor {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('/public/assets/images/doctor-card.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+#signin {
+  color: #16a7c8;
+}
+
+#signinbtn {
+  background-color: #16a7c8;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#signup {
+    color: #16a7c8;
+}
+
+#signup_btn {
+    background-color: #16a7c8;
+}
+
+
+
+
+#dashboard_bg {
+  background-color: #16a7c8;
+}
+
+#dashboard_btn {
+  background-color: #16a7c8;
+}
+
+#dashboard_text {
+  color: #16a7c8;
+}
+
+
+/* content styles */
+
+#intro-video {
+  background-image: url('/public/assets/images/backgroundVideo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #555;
+  background-blend-mode: overlay;
+}
+
+#medic-tips {
+  background-image: url('/public/assets/images/backgroundVideo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #555;
+  background-blend-mode: overlay;
+}
+
+
+/* scrollbar styles */
+
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 3px;
+  border-radius: 50%;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
