@@ -89,5 +89,8 @@ const doctorsSignin = (req,res) => {
         }
     })
 }
+const findPatient = (req,res) => {
+    
+}
 
 module.exports = { doctorsSignup, doctorsSignin }
