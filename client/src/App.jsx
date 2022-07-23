@@ -18,11 +18,11 @@ const App = () => {
           <Route path='/contactus' element={<ContactPage/>}/>
           <Route path='/signin' element={<Signin/>}/>
           <Route path='/signup' element={<Signup/>}/>
-          <Route path='/dashboard' element={<Dashboard/>}/>
-        </Routes>
+          <Route path='/
+        </Routes
       </BrowserRouter>
     </SnackbarProvider>
   )
 }
 
-export default App
+export default App;

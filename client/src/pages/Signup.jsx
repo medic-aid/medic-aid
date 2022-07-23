@@ -74,7 +74,7 @@ const Signup = () => {
   });
   return (
     <>
-      <div class="w-full pb-10 bg-gray-100">
+      <div class="w-full pb-10 bg-gray-100 min-h-screen">
         <Navbar />
         <form
           action="/login"
@@ -199,7 +199,6 @@ const Signup = () => {
             id="signup_btn"
             // disabled={formik.checkBox === false}
             type="submit"
-            
           >
             Sign up
           </button>
