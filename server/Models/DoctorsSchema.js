@@ -2,8 +2,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const doctorsSchema = new Schema({
     firstname:{
+        type: String,
+        required: true
+    },
+    lastname: {
         type: String,
         required: true
     },
@@ -12,8 +16,9 @@ const userSchema = new Schema({
         unique: true,
         required: true
     },
-    lastname: {
+    email:{
         type: String,
+        unique: true,
         required: true
     },
     phone_no: {
@@ -30,21 +35,26 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    medicalInfo: {
-        type: Array
+    pickHospital: {
+        type: String,
+        required: true
     },
-    medicalHistory: {
+    yearsOfExperience: {
+        type: String,
+        required: true
+    },
+    patientHistory: {
         type: Array
     }
 }, { timestamps:true });
 
-userSchema.pre('save', async function (next) {
+doctorsSchema.pre('save', async function (next) {
     let { password } = this;
     const saltRound = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(password, saltRound)
     next()
 })
 
-const usersModel = mongoose.model("user", userSchema);
+const doctorsModel = mongoose.model("doctors", doctorsSchema);
 
-module.exports = usersModel;
+module.exports = doctorsModel;
