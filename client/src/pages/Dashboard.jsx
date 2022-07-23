@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 import DashboardNav from '../components/DashboardNav'
+import DesktopScreenNavBar from '../components/DesktopScreenNavBar'
+import SmallScreenNavBar from '../components/SmallScreenNavBar'
+
 const Dashboard = () => {
   return (
     <>
@@ -8,49 +11,16 @@ const Dashboard = () => {
         <DashboardNav/>
     {/* content */}
     <div class="xl:w-10/12 md:w-11/12 h-screen flex flex-col">
-        <div class="flex md:hidden justify-between items-center px-5 py-3 shadow">
-            <h4 class="font-semibold text-xl">Medic_Aid</h4>
-            <button id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" class="text-gray-800 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"><i class="fa-solid fa-bars text-xl"></i></button>
-
-            <div id="dropdownDivider" class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 font-semibold">
-                <ul class="py-1" aria-labelledby="dropdownDividerButton">
-                    <li>
-                        <Link to="/dashboard" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white underline">Dashboard</Link>
-                    </li>
-                    <li>
-                        <Link to="/aboutus" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Today Us</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Records</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Medical tips</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">History</Link>
-                    </li>
-                </ul>
-                <div class="py-1">
-                    <Link to="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign In / Sign Up</Link>
-                </div>
-            </div>
-        </div>
+        {/* small screen navbar starts here */}
+                <SmallScreenNavBar/>
+        {/* small screen navbar ends here  */}
+        
+        
         {/* top desktop nav */}
-        <div class='md:flex hidden xl:px-10 px-5 justify-between items-center pt-10'>
-            <div class="flex w-2/6">
-                <input type="text" class="border border-gray-200 rounded-l rounded-r-0 px-3 py-1.5 w-full outline-none hover:border-gray-300 focus:border-gray-300 text-gray-500" placeholder="Search"/>
-                <div class="flex justify-center items-center text-gray-100 px-3 rounded-r rounded-l-0" id="dashboard_bg">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </div>
-            <div class="xl:w-1/5 md:w-2/5 flex items-center justify-around">
-                <i class="fa-solid fa-bell text-gray-600 text-xl"></i>
-                <div class="w-10 h-10 rounded-full" id="dashboard_bg">
-
-                </div>
-                <h4 class="text-gray-500 capitalize">Ajayi Kelvin</h4>
-            </div>
-        </div>
+        
+        <DesktopScreenNavBar/>
+        {/* top desktop nav ends */}
+       
 
         {/* content  */}
         <div class="md:flex md:h-4/5 h-5/6 w-full mt-5">
@@ -63,6 +33,8 @@ const Dashboard = () => {
                             <i class="fa-solid fa-play text-xl"></i>
                         </div>
                     </div>
+                   
+                   {/* background video ends here*/}
 
                     {/* cards */}
                     <div>
@@ -123,7 +95,7 @@ const Dashboard = () => {
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     {/* Dropdown menu */}
-                                    <div id="dropdownSmall" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                    <div id="dropdownSmall" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dasdark:divide-gray-600">
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSmallButton">
                                             <li>
                                                 <Link to="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</Link>
