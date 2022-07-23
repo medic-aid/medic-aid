@@ -69,4 +69,43 @@ const userSignin = (req,res) => {
     })
 }
 
-module.exports = {userSignup, userSignin}
+const editProfile = (req,res) => {
+    let id = req.params.id;
+    let {firstname, lastname, age, phone_no, email, address, city, bloodGrp, bloodTyp, genotype, bp } = req.body;
+    if(!bloodGrp==''|| !bloodTyp==''|| !genotype==''|| !bp=='') {
+        usersModel.updateOne({_id:id}, {$push:{medicalInfo:[{bloodGrp, bloodTyp, genotype, bp}]}}, (err)=>{
+            if(err) {
+                res.json({status:false, message:err.message})
+            } else {
+                res.json({status:true, message:"Updated your Profile"})
+            }}
+        )
+    }
+    if (firstname==""|| lastname==""|| phone_no=="") return res.json({status:false, message: "Firstname, Lastname and Phone Number cannot be empty"});
+    usersModel.updateOne({_id:id},{firstname, lastname, age, phone_no, email, address, city}, (err,result)=>{
+        if (err) {
+            if (err.keyPattern.email==1) {
+                res.json({status:false, message: 'Email Already Existed'})
+            } else if(err.keyPattern.phone_no==1) {
+                res.json({status:false, message: 'Phone Number Already Existed'})
+            }
+        } else {
+            res.json({status:true, message: "Updated successfully"})
+        }
+    })
+}
+
+const fetchHistory = (req,res) => {
+    let id = req.params.id;
+    usersModel.findOne({_id:id}, async(err,result)=>{
+        if (result==null) {
+            res.json({status: false, message: "User Not found"})
+        } else if (result) {
+            res.json({status: true, message: result.medicalHistory})
+        } else {
+            res.json({status: false, message: "Network Error"})
+        }
+    })
+}
+
+module.exports = {userSignup, userSignin, editProfile, fetchHistory}
