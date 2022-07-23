@@ -1,6 +1,7 @@
 const doctorsModel = require("../../Models/DoctorsSchema");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
+const usersModel = require("../../Models/UsersSchema");
 
 const doctorsSignup = (req,res) => {
     let { firstname, lastname, name, phone_no, password, email, pickHospital, yearsOfExperience } = req.body;
@@ -89,8 +90,52 @@ const doctorsSignin = (req,res) => {
         }
     })
 }
+const allPatient = (req,res)=> {
+    usersModel.find({}, (err,result)=>{
+        if(err) {
+            res.json({message:"Network Error", status:false})
+        } else {
+            res.json({message:result, status:true})
+        }
+    })
+}
 const findPatient = (req,res) => {
-    
+    usersModel.findOne({_id:req.params.id}, (err,result) => {
+        if(err) {
+            res.json({message:err.message, status:false})
+        } else {
+            res.json({message:result, status:true})
+        }
+    })
+}
+const addReport = (req,res) => {
+    let {id, report} = req.body
+    let userId = req.params.id
+    doctorsModel.updateOne({_id:id}, {$push:{patientHistory:[{id, report}]}}, (err)=>{
+        if(err) {
+            res.json({status:false, message:err.message})
+        } else {
+            usersModel.updateOne({_id:userId}, {$push:{medicalHistory:[{id, report}]}}, (error)=>{
+                if (error) {
+                    res.json({status:false, message:err.message})
+                } else {
+                    res.json({status: true, message:"Medical History Added Successfully"})
+                }
+            })
+        }
+    })
+}
+const patientHistory = (req,res) => {
+    let { doctorsId } = req.body;
+    doctorsModel.findOne({_id:doctorsId}, async(err,result)=>{
+        if(result==null) {
+            res.json({message: 'Account not found', status: false});
+        }else if (result) {
+            res.json({message: result.patientHistory, status: true});
+        } else if (err) {
+            res.json({message: 'Network Error', status: false, err});
+        } 
+    })
 }
 
-module.exports = { doctorsSignup, doctorsSignin }
+module.exports = { doctorsSignup, doctorsSignin, allPatient,findPatient, addReport, patientHistory }
